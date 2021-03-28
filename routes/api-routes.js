@@ -5,6 +5,7 @@ const Workout = require("../models/Workout.js");
 module.exports = function (app) {
 
     router.get("/api/workouts", (req, res) => {
+        console.log("if you see this, your stupid api file is accessing this");
         Workout.find({})
           .sort({ date: -1 })
           .then(FitnessTrackerDB => {
@@ -57,3 +58,5 @@ module.exports = function (app) {
       });
 
 };
+
+module.exports = router;
