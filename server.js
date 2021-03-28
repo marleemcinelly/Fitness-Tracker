@@ -2,7 +2,7 @@ const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 const app = express();
 
@@ -27,20 +27,20 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
 
 // routes
 app.use(require("./routes/html-routes.js"));
-// app.use(require("./routes/api-routes.js"));
+app.use(require("./routes/api-routes.js"));
 
-app.post("/submit", ({body}, res) => {
-    const user = new User(body);
-    user.setFullName();
-    user.lastUpdatedDate();
+// app.post("/submit", ({body}, res) => {
+//     const user = new User(body);
+//     user.setFullName();
+//     user.lastUpdatedDate();
   
-    User.create(user)
-      .then(dbUser => {
-        res.json(dbUser);
-      })
-      .catch(err => {
-        res.json(err);
-      });
-  });
+//     User.create(user)
+//       .then(dbUser => {
+//         res.json(dbUser);
+//       })
+//       .catch(err => {
+//         res.json(err);
+//       });
+//   });
   
   
